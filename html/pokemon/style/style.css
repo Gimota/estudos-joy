@@ -1,0 +1,84 @@
+*{
+margin: 0;  
+}
+.headLogin{
+    color:rgb(190, 178, 201);
+    background-color: rgb(246, 237, 228);
+    font-size: 25px;
+    margin-bottom: 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+} 
+.logo{
+    max-height: 100px;
+    margin-bottom: 10px;
+}
+
+.tituloLogin{
+    text-align: center;
+    font-size: 45px;
+    color: rgb(220, 172, 225);
+    margin-bottom: 30px;
+}
+
+body {
+    background-color: #fae9f7; /* Altere este valor para a cor desejada */
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.loginCadastro{
+    background-color: rgb(32, 10, 53);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    width: 200px;
+    margin: 0 10px 20px 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+input
+
+
+
+
+
+
+
+
+
+
+
+
+
+.banner{
+    max-width:740px;
+    display:block;
+    margin: 0 auto;
+
+}
+
+.footerLogin{
+    background: ;
+}

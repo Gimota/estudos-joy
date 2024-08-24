@@ -1,0 +1,20 @@
+.divMae {
+    display: flex;
+}
+ 
+.div1{
+    background-color: black;
+    height: 50px;
+    width: 50px;
+}
+.div2{
+    background-color: yellow;
+    height: 50px;
+    width: 50px;
+}
+.div3{
+    background-color: red;
+    height: 50px;
+    width: 50px;
+}
+ 

@@ -1,0 +1,18 @@
+.paragrafoClasse{ 
+color:blueviolet 
+}
+
+#paragrafo{
+    color:rgb(90, 139, 139)
+}
+
+.divClasse{
+    color:brown
+}
+
+p{
+    font-size: 20px;
+}
+div{
+    background-color: coral;
+}
