@@ -1,0 +1,66 @@
+
+/*
+create table bolos (
+  id_bolo serial primary key,
+  nome VARCHAR(50) NOT NULL,
+  preco FLOAT NOT NULL,
+  em_promocao BOOLEAN 
+);
+
+
+create table instrumento (
+  id_instrumento serial primary key,
+  nome VARCHAR(50) NOT NULL,
+  preco FLOAT NOT NULL,
+  em_promocao BOOLEAN 
+);
+
+  
+CREATE TABLE vendedor (
+  id_vendedor serial PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL,
+  telefone VARCHAR(25) NOT NULL,
+  email VARCHAR(50)
+
+);*/
+
+/*
+INSERT INTO instrumento(nome, preco, em_promocao)
+VALUES
+('violino', 1500.00, FALSE),
+('Pandeiro', 50.00, TRUE)
+ 
+  
+INSERT into vendedor(nome, telefone, email)
+VALUES
+('Alvaro','38949490003939939','alvinhu@hotmail.com'),
+('Gislene','92838784748', 'drgislenemota@gmail.com'),
+('Rosana', '357882636388', 'confeitaria.chantininho@gamil.com'),
+('Tiago', '77778', 'tiagoeoa@gamil.com')
+*/
+
+/*
+INSERT INTO bolos(nome, preco, em_promocao)
+VALUES
+('chocolate', 20.00, FALSE),
+('churros', 10.00, TRUE),
+('red volvet', 10.00, TRUE)*/
+
+/*
+select * from instrumento
+
+select * from vendedor
+
+select * from bolos ORDER BY nome
+
+
+update bolos SET NOME = 'NINHO NUTELLA' WHERE ID_BOLO = 1/*
+
+
+
+
+
+
+
+
+
