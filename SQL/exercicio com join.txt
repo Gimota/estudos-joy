@@ -1,0 +1,76 @@
+CREATE TABLE Clientes (
+    ClienteID SERIAL PRIMARY KEY, 
+    Nome VARCHAR(100),
+    Email VARCHAR(100),
+    Telefone VARCHAR(15)
+);
+
+CREATE TABLE Produtos (
+    ProdutoID SERIAL PRIMARY KEY, -- SERIAL no PostgreSQL, INTEGER AUTOINCREMENT no SQLite
+    NomeProduto VARCHAR(100),
+    Preco DECIMAL(10, 2),
+    Estoque INT
+);
+
+CREATE TABLE Pedidos (
+    PedidoID SERIAL PRIMARY KEY,  
+    ClienteID INT,
+    ProdutoID INT,
+    Quantidade INT,
+    DataPedido DATE,
+    ValorTotal DECIMAL(10, 2),
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID),
+    FOREIGN KEY (ProdutoID) REFERENCES Produtos(ProdutoID)
+);
+
+INSERT INTO Clientes (Nome, Email, Telefone)
+VALUES 
+('João Silva', 'joao.silva@gmail.com', '11987654321'),
+('Maria Oliveira', 'maria.oliveira@gmail.com', '11976543210'),
+('Pedro Santos', 'pedro.santos@gmail.com', '11965432109');
+
+INSERT INTO Produtos (NomeProduto, Preco, Estoque)
+VALUES 
+('Notebook', 3500.00, 10),
+('Smartphone', 2000.00, 20),
+('Teclado', 150.00, 50);
+
+INSERT INTO Pedidos (ClienteID, ProdutoID, Quantidade, DataPedido, ValorTotal)
+VALUES 
+(1, 1, 1, '2024-10-10', 3500.00),
+(1, 3, 1, '2024-10-10', 150.00),  
+(2, 2, 1, '2024-10-11', 2000.00);
+
+
+SELECT * from Clientes
+SELECT * from produtos
+SELECT * from pedidos
+
+
+SELECT Clientes.Nome, Produtos.NomeProduto, Pedidos.Quantidade, Pedidos.ValorTotal
+FROM Pedidos
+INNER JOIN Produtos ON Pedidos.ProdutoID = Produtos.ProdutoID
+INNER JOIN Clientes ON Pedidos.ClienteID = Clientes.ClienteID;
+
+
+CREATE OR REPLACE FUNCTION atualizar_estoque() 
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Reduz o estoque do produto com base na quantidade inserida no pedido
+    UPDATE Produtos
+    SET Estoque = Estoque - NEW.Quantidade
+    WHERE ProdutoID = NEW.ProdutoID;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Agora criamos o Trigger que vai disparar a função após um INSERT na tabela de Pedidos
+CREATE TRIGGER trigger_atualizar_estoque
+AFTER INSERT ON Pedidos
+FOR EACH ROW
+EXECUTE FUNCTION atualizar_estoque();
+
+
+INSERT INTO Pedidos (ClienteID, ProdutoID, Quantidade, DataPedido, ValorTotal)
+VALUES (1, 1, 3, '2024-10-12', 7000.00);
